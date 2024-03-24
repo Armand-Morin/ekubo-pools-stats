@@ -1,0 +1,4 @@
+![Image Description](positions\trader_0x01bb1d42f33c20fc30aa152f2aedfbf8b553fc500e5998f32de3cbec79561271_price_ranges.png)
+![Another Image Description](positions\trader_0x07f116fda10778fa1cf6bf39251d3cf792bd243352e76f0dceb6226ebbf7b34d_price_ranges.png)
+
+![GIF Description](liquidity_shape.gif)
