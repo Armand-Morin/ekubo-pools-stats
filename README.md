@@ -1,6 +1,7 @@
 # OpenBlock Labs Data Scientist Take-Home Assignment
 
-## ARMAND MORIN
+## Contacts
+##### ARMAND MORIN
 
 armand_morin@berkeley.edu
 
@@ -9,7 +10,14 @@ https://www.linkedin.com/in/armand-morin/
 # Liquidity of the pool ETH - USDC
 ![GIF Description](liquidity_shape.gif)
 
-# Trader positions 
+# Basics Stats
+### Density of Upper and Lower bounds of positions minted
+![Density of Upper and Lower bounds of positions minted](pics/mint_density.png)
+
+### Scatter history of Upper and Lower bounds of positions minted
+![Scatter history of Upper and Lower bounds of positions minted](pics/mint_positions_history.png)
+
+# Top Traders positions 
 ![Positions of a trader](positions_and_metrics/trader_0x01bb1d42f33c20fc30aa152f2aedfbf8b553fc500e5998f32de3cbec79561271_price_ranges_and_metrics.png)
 
 ![Positions of an other trader](positions_and_metrics/trader_0x03fe78b71fb9061269b2595dbcee1caf332ca1b4dc51be148f5ccc370d259e6c_price_ranges_and_metrics.png)

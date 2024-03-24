@@ -38,7 +38,7 @@ def plot_liquidity_shape(liquidity_per_tick, current_tick, tick_spacing, title):
     return fig
 
 
-def create_gif():
+def create_gif(n_frames=100):
     df = pd.read_csv('ekubo_market_depth_dataset.csv')
 
     df['time'] = pd.to_datetime(df['BLOCK_TIMESTAMP'], format='%Y-%m-%d %H:%M:%S')
@@ -48,7 +48,7 @@ def create_gif():
     pool_id = df['POOL_ID'].values[0]
     pool_data = df[df['POOL_ID'] == pool_id].copy()
 
-    increments = np.linspace(0.1, 1, 100)
+    increments = np.linspace(0.001, 1, n_frames)
     for increment in increments:
         subset_size = int(len(pool_data) * increment)
         subset_data = pool_data.iloc[:subset_size]
@@ -70,3 +70,5 @@ def create_gif():
             writer.append_data(image)
 
     print(f"GIF created successfully at: {gif_path}")
+
+create_gif(n_frames=100)
