@@ -38,34 +38,35 @@ def plot_liquidity_shape(liquidity_per_tick, current_tick, tick_spacing, title):
     return fig
 
 
-df = pd.read_csv('ekubo_market_depth_dataset.csv')
+def create_gif():
+    df = pd.read_csv('ekubo_market_depth_dataset.csv')
 
-df['time'] = pd.to_datetime(df['BLOCK_TIMESTAMP'], format='%Y-%m-%d %H:%M:%S')
-df.sort_values('time', inplace=True)
-df.set_index('time', inplace=True)
+    df['time'] = pd.to_datetime(df['BLOCK_TIMESTAMP'], format='%Y-%m-%d %H:%M:%S')
+    df.sort_values('time', inplace=True)
+    df.set_index('time', inplace=True)
 
-pool_id = df['POOL_ID'].values[0]
-pool_data = df[df['POOL_ID'] == pool_id].copy()
+    pool_id = df['POOL_ID'].values[0]
+    pool_data = df[df['POOL_ID'] == pool_id].copy()
 
-increments = np.linspace(0.1, 1, 100)
-for increment in increments:
-    subset_size = int(len(pool_data) * increment)
-    subset_data = pool_data.iloc[:subset_size]
-    liquidity_per_tick = liquidity_shape(subset_data)
-    fig = plot_liquidity_shape(liquidity_per_tick, subset_data['SWAP_TICK'].iloc[0], subset_data['TICK_SPACING'].iloc[0], f'Liquidity Shape at time {subset_data.index[-1]}')
-    fig.write_image(f'img/frame_{int(increment*100):03d}.png')
+    increments = np.linspace(0.1, 1, 100)
+    for increment in increments:
+        subset_size = int(len(pool_data) * increment)
+        subset_data = pool_data.iloc[:subset_size]
+        liquidity_per_tick = liquidity_shape(subset_data)
+        fig = plot_liquidity_shape(liquidity_per_tick, subset_data['SWAP_TICK'].iloc[0], subset_data['TICK_SPACING'].iloc[0], f'Liquidity Shape at time {subset_data.index[-1]}')
+        fig.write_image(f'img/frame_{int(increment*100):03d}.png')
 
 
-image_folder = 'img'
+    image_folder = 'img'
 
-images = [os.path.join(image_folder, img) for img in os.listdir(image_folder) if img.endswith(".png")]
+    images = [os.path.join(image_folder, img) for img in os.listdir(image_folder) if img.endswith(".png")]
 
-images.sort(key=lambda x: int(x.split('_')[-1].split('.')[0]))
+    images.sort(key=lambda x: int(x.split('_')[-1].split('.')[0]))
 
-gif_path = 'liquidity_shape.gif'
-with imageio.get_writer(gif_path, mode='I') as writer:
-    for filename in images:
-        image = imageio.imread(filename)
-        writer.append_data(image)
+    gif_path = 'liquidity_shape.gif'
+    with imageio.get_writer(gif_path, mode='I') as writer:
+        for filename in images:
+            image = imageio.imread(filename)
+            writer.append_data(image)
 
-print(f"GIF created successfully at: {gif_path}")
+    print(f"GIF created successfully at: {gif_path}")
