@@ -4,7 +4,9 @@
 ##### ARMAND MORIN
 
 email   : armand_morin@berkeley.edu
+
 telegram: https://t.me/Zigouli
+
 linkedin: https://www.linkedin.com/in/armand-morin/
 
 # Considerations
