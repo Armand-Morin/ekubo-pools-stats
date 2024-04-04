@@ -1,4 +1,4 @@
-# OpenBlock Labs Data Scientist Take-Home Assignment
+# Ekubo Starknet pool analytics
 
 ## Contacts details
 ##### ARMAND MORIN
